@@ -1,0 +1,52 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner() {
+      return isAuthenticated() && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'owner';
+    }
+    
+    function isTechnician() {
+      return isAuthenticated() && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'technician';
+    }
+    
+    function isStaff() {
+      return isOwner() || isTechnician();
+    }
+
+    // 1. Users collection
+    match /users/{userId} {
+      allow read: if isAuthenticated() && (request.auth.uid == userId || isStaff());
+      allow create: if isAuthenticated() && request.auth.uid == userId;
+      allow update, delete: if isOwner();
+    }
+
+    // 2. Products collection (Public read, Owner manage)
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isOwner();
+    }
+
+    // 3. Orders collection (Customer own orders, Staff all orders)
+    match /orders/{orderId} {
+      allow read: if isStaff() || (isAuthenticated() && resource.data.customerUid == request.auth.uid);
+      allow create: if true; // Allows counter reservation
+      allow update, delete: if isStaff();
+    }
+
+    // 4. Repairs collection (Customer view own, Staff view and update)
+    match /repairs/{repairId} {
+      allow read: if true; // Allows tracking by ticket reference
+      allow create: if true; // Allows booking a tool diagnostic
+      allow update: if isStaff();
+      allow delete: if isOwner();
+    }
+  }
+}
