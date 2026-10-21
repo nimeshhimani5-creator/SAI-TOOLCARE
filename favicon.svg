@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="amazon-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFB800"/>
+      <stop offset="50%" stop-color="#FF9900"/>
+      <stop offset="100%" stop-color="#FF5500"/>
+    </linearGradient>
+    <linearGradient id="amazon-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#232f3e"/>
+      <stop offset="100%" stop-color="#131921"/>
+    </linearGradient>
+    <linearGradient id="neon-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <filter id="logo-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#FF9900" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Outer Hexagonal Turbine Frame -->
+  <polygon points="32,3 58,18 58,46 32,61 6,46 6,18" fill="url(#amazon-dark)" stroke="#374151" stroke-width="2"/>
+  <polygon points="32,7 54,20 54,44 32,57 10,44 10,20" fill="#0d1117" stroke="url(#amazon-gold)" stroke-width="1.2" opacity="0.8"/>
+
+  <!-- Iconic Dynamic 'S' & Precision Chuck Helix -->
+  <g filter="url(#logo-shadow)">
+    <!-- Upper Sweeping Arc of 'S' with Gear Teeth -->
+    <path d="M42 16 C36 12, 24 13, 20 19 C16 25, 20 30, 27 32 L36 34 C43 36, 46 41, 43 47 C40 53, 28 54, 21 49" 
+          stroke="url(#amazon-gold)" 
+          stroke-width="5" 
+          stroke-linecap="round" 
+          fill="none"/>
+
+    <!-- High-Voltage Power Bolt Core -->
+    <path d="M36 14 L23 33 L32 33 L27 50 L44 28 L35 28 Z" fill="#ffffff" opacity="0.95"/>
+    <path d="M35 17 L25 32 L32 32 L28 47 L41 29 L34 29 Z" fill="url(#amazon-gold)"/>
+
+    <!-- Spark Dot in Center -->
+    <circle cx="32" cy="32" r="2.2" fill="#ffffff"/>
+  </g>
+
+  <!-- Amazon-style Signature Smile Swoosh at Base -->
+  <path d="M14 47 C24 55, 40 55, 50 47" stroke="url(#amazon-gold)" stroke-width="3" stroke-linecap="round"/>
+  <!-- Arrow Head -->
+  <polygon points="50,47 46,43 51,43" fill="url(#amazon-gold)"/>
+  <circle cx="51" cy="46" r="1.8" fill="#FF9900"/>
+</svg>
