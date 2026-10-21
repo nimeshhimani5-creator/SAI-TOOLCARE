@@ -754,69 +754,70 @@ const RAW_PRODUCTS: Product[] = [
 ];
 
 export const getProductDefaultImage = (name: string, model: string, cat: string): string => {
+  const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') + '/';
   const lower = (name + ' ' + model + ' ' + cat).toLowerCase();
 
   // 1. Pure Copper Armatures & Rotors
   if (lower.includes('armature') || lower.includes('rotor')) {
-    return '/images/copper-armature.jpg';
+    return `${base}images/copper-armature.jpg`;
   }
 
   // 2. Stator Field Coils
   if (lower.includes('stator') || lower.includes('field coil')) {
-    return '/images/stator-coil.jpg';
+    return `${base}images/stator-coil.jpg`;
   }
 
   // 3. Auto-Cut Motor Carbon Brushes
   if (lower.includes('carbon brush') || lower.includes('cb-')) {
-    return '/images/carbon-brushes.jpg';
+    return `${base}images/carbon-brushes.jpg`;
   }
 
   // 4. Armature Ball Bearings
   if (lower.includes('bearing') || lower.includes('608-2rs') || lower.includes('629-2rs')) {
-    return '/images/ball-bearings.jpg';
+    return `${base}images/ball-bearings.jpg`;
   }
 
   // 5. Switches
   if (lower.includes('switch')) {
-    return '/images/switch-assembly.jpg';
+    return `${base}images/switch-assembly.jpg`;
   }
 
   // 6. Flange Nut & Spanner Sets
   if (lower.includes('flange') || lower.includes('nut') || lower.includes('spanner')) {
-    return '/images/flange-nut.jpg';
+    return `${base}images/flange-nut.jpg`;
   }
 
   // 7. Demolition Hammer Piston Overhaul Kits
   if (lower.includes('piston') || lower.includes('striker') || lower.includes('overhaul')) {
-    return '/images/piston-kit.jpg';
+    return `${base}images/piston-kit.jpg`;
   }
 
   // 8. Diamond Blades & Cutting Discs
   if (lower.includes('blade') || lower.includes('turbo') || lower.includes('cutting disc') || lower.includes('wheel')) {
-    return '/images/diamond-blade.jpg';
+    return `${base}images/diamond-blade.jpg`;
   }
 
   // 9. Demolition Breaker Hammers
   if (lower.includes('demolition') || lower.includes('breaker') || lower.includes('hm0810') || lower.includes('h41sst')) {
-    return '/images/demolition-hammer.jpg';
+    return `${base}images/demolition-hammer.jpg`;
   }
 
   // 10. Marble & Tile Cutters
   if (lower.includes('marble') || lower.includes('tile cutter') || lower.includes('cutter') || lower.includes('4100nh') || lower.includes('gdc 120')) {
-    return '/images/marble-cutter.jpg';
+    return `${base}images/marble-cutter.jpg`;
   }
 
   // 11. Rotary Hammers & SDS Drills
   if (lower.includes('rotary hammer') || lower.includes('hammer drill') || lower.includes('gbh 2-26') || lower.includes('d25133k') || lower.includes('drill')) {
-    return '/images/rotary-hammer.jpg';
+    return `${base}images/rotary-hammer.jpg`;
   }
 
   // 12. Angle Grinders
   if (lower.includes('grinder') || lower.includes('gws 600') || lower.includes('9554nb') || lower.includes('dw801')) {
-    return '/images/angle-grinder.jpg';
+    return `${base}images/angle-grinder.jpg`;
   }
 
-  return '/images/copper-armature.jpg';
+  return `${base}images/copper-armature.jpg`;
 };
 
 export const MOCK_PRODUCTS: Product[] = RAW_PRODUCTS.map((p) => ({
